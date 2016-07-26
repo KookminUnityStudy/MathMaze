@@ -13,25 +13,26 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        // 플레이어의 위치
-        Transform ptransform = GetComponent<Transform>();
+
+        int speed = 2; // 1초마다 2만큼씩 간다는 얘기 Time.deltatTime이 초마다
+        int distance = 1; // 한번에 이동거리
 
         // 플레이어의 움직임 조작
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow))
         {
-            
+            transform.Translate(new Vector3(0, 0, distance) * Time.deltaTime * speed);
         }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.DownArrow))
         {
-            Debug.Log("아래버튼 눌렸습니다.");
+            transform.Translate(new Vector3(0, 0, -distance) * Time.deltaTime * speed);
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
-            Debug.Log("왼쪽버튼 눌렸습니다.");
+            transform.Translate(new Vector3(-distance, 0, 0) * Time.deltaTime * speed);
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
-            Debug.Log("오른쪽버튼 눌렸습니다.");
+            transform.Translate(new Vector3(distance, 0, 0) * Time.deltaTime * speed);
         }
     }
 }
